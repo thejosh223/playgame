@@ -2,5 +2,5 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SoundWavePool : ObjectPool<SoundWave> {
+public class SoundWaveParticlePool : ObjectPool<SoundWaveParticle> {
 } 

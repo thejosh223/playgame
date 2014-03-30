@@ -12,10 +12,10 @@ public class PlayerController : MonoBehaviour {
 
 	void Update() {
 		if (Input.GetMouseButtonDown(0)) {
-			SoundWave t = SoundwavePool.Instance.Get();
+			SoundWave t = SoundWavePool.Instance.Get();
 			t.transform.position = transform.position + Vector3.up;
-			t.velocity = eyeCam.transform.forward;
-			t.startTime = Time.time;
+
+			t.StartWave(eyeCam.transform.forward * 5f);
 		}
 	}
 }
