@@ -2,8 +2,7 @@
 using UnityEngine;
 
 public class ObjectPool<T> : MonoBehaviour where T : Component {
-	// 1st dimension = object types, 2nd = objects in the pool for that type
-	readonly List<T> objects;
+	private List<T> objects;
 	// Can set a parent folder to store objects in the pool in
 	public Transform ParentFolder;
 	// Static pointer to an instance of this
@@ -13,8 +12,10 @@ public class ObjectPool<T> : MonoBehaviour where T : Component {
 	public bool AutoActive = true;
 	// Number to allocate at once when more are needed
 	public int NumToAllocate = 5;
+	// The object to instantiate
+	public T prefab;
 	
-	public ObjectPool () {
+	void Awake() {
 		objects = new List<T>();
 		Instance = this;
 	}
@@ -30,9 +31,9 @@ public class ObjectPool<T> : MonoBehaviour where T : Component {
 	}
 	
 	// Get an object from the pool
-	public T Get(T obj) {
+	public T Get() {
 		if (objects.Count == 0) {
-			Allocate(obj, NumToAllocate);
+			Allocate(prefab, NumToAllocate);
 		}
 		T returnObj = objects[0];
 		objects.RemoveAt(0);

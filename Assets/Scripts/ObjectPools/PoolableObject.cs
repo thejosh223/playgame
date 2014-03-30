@@ -2,5 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SoundwavePool : ObjectPool<SoundWave> {
-} 
+interface PoolableObject {
+	void ObjectGet();
+}
